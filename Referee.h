@@ -4,7 +4,6 @@
 
 class Referee {
     public:
-    Refree();
     Player* refGame(Player* player1, Player* player2);
 };
 
