@@ -8,7 +8,7 @@ class Human : public Player {
     char move;
     std::string name;
     public:
-    Human() {this->name = ''};
+    Human() {this->name = "default constructor";}
     Human(std::string name) : name(name) {}
     char makeMove();
     std::string getName() { return this->name; }
