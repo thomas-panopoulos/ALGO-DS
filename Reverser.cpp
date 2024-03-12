@@ -2,16 +2,16 @@
 #include <iostream>
 #include <string>
 int Reverser::reverseDigit(int num) {
-    this->rev_num = 0;
+    static int rev_num = 0;
     if (num <= -1) {
         return -1;
     }
     if (num <= 0) {
-        return this->rev_num;
+        return rev_num;
     }
-    this->rev_num = this->rev_num* 10 + num%10;
+    rev_num = rev_num* 10 + num%10;
     reverseDigit(num/10);
-    return this->rev_num;
+    return rev_num;
 }
 
 std::string Reverser::reverseString(std::string str) {
