@@ -1,4 +1,5 @@
-#pragma Once
+#ifndef REVERSER_H
+#define REVERSER_H
 #include <iostream>
 #include <string>
 
@@ -9,4 +10,4 @@ class Reverser {
     
 };
 
-
+#endif

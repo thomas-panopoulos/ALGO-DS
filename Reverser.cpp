@@ -1,5 +1,6 @@
 #include "Reverser.h"
 #include <iostream>
+#include <string>
 int Reverser::reverseDigit(int num) {
     static int rev_num;
     if (num <= 0) {
@@ -10,11 +11,11 @@ int Reverser::reverseDigit(int num) {
 }
 
 std::string Reverser::reverseString(std::string str) {
-    static std::string reversed = str;
-    static int n = str.length()-1; static int i = 0;
-    if (n<=i) {return reversed;}
-    std::swap(reversed[i],reversed[n]);
-    n--, i++;
-
-    reverseString(reversed);
+    static std::string reversed;
+    if(str.length() > 0) {
+        reversed.push_back(str.back());
+        str.pop_back();
+        reverseString(str);
+    }
+    return reversed;
 }
