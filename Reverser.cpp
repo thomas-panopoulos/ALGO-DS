@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 int Reverser::reverseDigit(int num) {
-    static int rev_num = 0;
+    int rev_num = 0;
     if (num <= -1) {
         return -1;
     }
