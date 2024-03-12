@@ -1,5 +1,6 @@
 #include "Truckloads.h"
 
+
 int Truckloads::numTrucks(int numCrates, int maxLoad) {
         if (numCrates <= maxLoad) {
             return 1;
