@@ -11,7 +11,6 @@ int Reverser::reverseDigit(int num) {
     }
     rev_num = rev_num* 10 + num%10;
     reverseDigit(num/10);
-    return rev_num;
 }
 
 std::string Reverser::reverseString(std::string str) {
