@@ -16,13 +16,13 @@ int Reverser::reverseDigit(int num) {
     return num%10* pow(10, (numDigits-1)) + reverseDigit(num/10);;
 }
 
+
 std::string Reverser::reverseString(std::string str) {
-    static std::string reversed;
-    if(str.length() > 0) {
-        reversed.push_back(str.back());
-        str.pop_back();
-        reverseString(str);
+    if (str.length() == 1) {
+        return str;
     }
-    return reversed;
+    else {
+        return str.back() + reverseString(str.substr(0, str.length() - 1));
+    }
 }
 
