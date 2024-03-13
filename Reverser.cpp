@@ -1,17 +1,19 @@
 #include "Reverser.h"
 #include <iostream>
 #include <string>
+#include <cmath>
 int Reverser::reverseDigit(int num) {
-    static int rev_num = 0;
-    if (num <= -1) {
+
+    if (num < 0) {
         return -1;
     }
-    if (num <= 0) {
-        return rev_num;
+    if (num < 10) {
+        return num;
     }
-    rev_num = rev_num* 10 + num%10;
-    reverseDigit(num/10);
-    return rev_num;
+    int numDigits = ceil(log10(num));
+    
+    
+    return num%10* pow(10, (numDigits-1)) + reverseDigit(num/10);;
 }
 
 std::string Reverser::reverseString(std::string str) {
