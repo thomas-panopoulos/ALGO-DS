@@ -13,7 +13,7 @@ int Reverser::reverseDigit(int num) {
     int numDigits = ceil(log10(num));
     
     
-    return num%10* pow(10, (numDigits-1)) + reverseDigit(num/10);;
+    return num%10* pow(10, (numDigits-1)) + reverseDigit(num/10);
 }
 
 
