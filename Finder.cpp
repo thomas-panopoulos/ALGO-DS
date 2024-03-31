@@ -2,12 +2,12 @@
 using namespace std;
 vector<int> Finder::findSubstrings(string s1, string s2) {
 vector<int> result;
-size_t j;
+size_t j = 0;
 for(size_t i = 1; i <= s2.size(); i++) {
-    
+
     size_t found = s1.find(s2.substr(0, i), j);
 
-    size_t found = s1.find(s2.substr(0, i),0);
+    //size_t found = s1.find(s2.substr(0, i),0);
     j = found;
 
     if (found != string::npos) {
