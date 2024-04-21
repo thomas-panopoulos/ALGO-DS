@@ -16,7 +16,7 @@ std::vector<int> QuickSort::sort(std::vector<int> list) {
     for (int i = 0; i < list.size(); i++) {
         if (list[i] < pivot)
             left.push_back(list[i]);
-        else if (list[i] > pivot)
+        else if (list[i] >= pivot)
             right.push_back(list[i]);
     }
 
