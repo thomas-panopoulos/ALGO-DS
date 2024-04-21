@@ -1,20 +1,23 @@
 #include "RecursiveBinarySearch.h"
 #include <vector>
+#include <algorithm>
+#include <iostream>
+#include <cmath>
 bool RecursiveBinarySearch::search(std::vector<int> list, int num) {
-    if (list[list.size() / 2] == num) {
+    if (list.empty()) {
+        return 0;
+    }
+
+    auto mid = list.begin() + (list.end() - list.begin()) / 2;
+    if (*mid == num) {
         return true;
+    }   
+    else if (*mid > num) {
+        std::vector<int> next(list.begin(), mid);
+        return search(next, num);
     }
-    if (list[list.size() / 2] > num) {
-        std::vector<int>::const_iterator start = list.begin();
-        std::vector<int>::const_iterator end = list.end()-list.size() / 2 -1;
-        std::vector<int> next(start,end);
-        search(next, num);
+    else {
+        std::vector<int> next(mid+1, list.end());
+        return search(next, num);
     }
-    if (list[list.size() / 2] < num) {
-        std::vector<int>::const_iterator start = list.begin()+list.size() / 2 + 1;
-        std::vector<int>::const_iterator end = list.end();
-        std::vector<int> next(start,end);
-        search(next, num);
-    }
-    return false;
 }

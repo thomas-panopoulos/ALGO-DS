@@ -1,6 +1,7 @@
 #include "BubbleSort.h"
 #include <iostream>
 #include <vector>
+#include <string>
 #include "QuickSort.h"
 #include "RecursiveBinarySearch.h"
 int main() {
@@ -12,12 +13,12 @@ int main() {
     }
     while(std::cin.peek() != '\n');
     QuickSort QS;
-    std::vector<int> test{1,2,5,4,2};
-    std::vector<int> sorted = QS.sort(test);
+    std::vector<int> sorted = QS.sort(input);
     RecursiveBinarySearch RBS;
-    //bool found = RBS.search(sorted, 1);
-    //std::cout << found;
+    bool found = RBS.search(sorted, 1);
+    found == 0 ? std::cout << "false" : std::cout << "true";
     for (auto i : sorted) {
-        std::cout << i << std::endl;
+        std::cout <<' '+ std::to_string(i);
     }
+    std::cout << "\n";
 }
