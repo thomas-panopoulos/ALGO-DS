@@ -12,5 +12,6 @@ class LinkedList {
     int search(int target);
     void printList();
     LinkedList() : head(nullptr) {};
+    ~LinkedList();
 
 };
