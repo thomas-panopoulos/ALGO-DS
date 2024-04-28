@@ -99,7 +99,7 @@ int LinkedList::search(int target) {
     }
     return -1;
 }
-void LinkedList::printlist() { 
+void LinkedList::printList() { 
     Node* temp = head; 
     std::string str;
     // Check for empty list. 
