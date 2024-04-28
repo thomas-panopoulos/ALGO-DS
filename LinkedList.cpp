@@ -23,21 +23,20 @@ LinkedList::LinkedList(int* array, int len) {
 void LinkedList::insertPosition(int pos, int newNum) {
     Node* traverse = head;
     Node* newNode = new Node(newNum);
-
-    if (pos <= 1) {
+    int index = 1;
+    if (pos <= 1 || head == nullptr) {
         newNode->setLink(head);
         this->head = newNode;
+        return;
     }
 
-    else {
-
-        while(--pos > 1) {
-            traverse = traverse->getLink();
-        }
-
-        newNode->setLink(traverse->getLink());
-        traverse->setLink(newNode);
+    while (traverse->getLink() != nullptr && index < pos - 1) {
+        traverse = traverse->getLink();
+        index++;
     }
+
+    newNode->setLink(traverse->getLink());
+    traverse->setLink(newNode);
 }
 
 
