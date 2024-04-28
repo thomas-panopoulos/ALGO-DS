@@ -1,4 +1,5 @@
-#pragma Once
+#ifndef NODE_H
+#define NODE_H
 
 class Node {
     private:
@@ -11,3 +12,4 @@ class Node {
     Node* getLink() { return link;}
     void setLink(Node* node) { link = node;}
 };
+#endif

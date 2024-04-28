@@ -1,5 +1,6 @@
 #include "Node.h"
-#pragma Once
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 
 class LinkedList {
     private:
@@ -15,3 +16,5 @@ class LinkedList {
     ~LinkedList();
 
 };
+
+#endif
