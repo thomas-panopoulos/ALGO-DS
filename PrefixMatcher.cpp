@@ -14,7 +14,7 @@ void PrefixMatcher::insert(std::string address, int router) {
 
 int PrefixMatcher::selectRouter(std::string address) {
     PrefixTrieNode* traverse = trie.root;
-    int selectedRouter = 0;
+    int selectedRouter = -1;
 
     for (char c : address) {
         if (traverse->children.find(c) != traverse->children.end()) {
