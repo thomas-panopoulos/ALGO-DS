@@ -35,18 +35,18 @@ Heap<T>::Heap() {}
 /*******************************/
 
 template <typename T>
-Heap<T>::Heap(std::vector<T> start_values) {
+Heap<T>::Heap(std::vector<T> beginning_values) {
   // copy the values into our heap vector
-  for (int i = 0; i < start_values.size(); i++) {
-    values.push_back(start_values.at(i));
+  for (int i = 0; i < beginning_values.size(); i++) {
+    values.push_back(beginning_values.at(i));
   }
 
   // starting from last non-leaf node (last parent), heapify each
   // of the parents
-  int initial_parent_index = floor(values.size() / 2) - 1;
-  for (int parent_index = initial_parent_index; parent_index >= 0;
-       parent_index--) {
-    heapify(parent_index);
+  int init_parent_pos = floor(values.size() / 2) - 1;
+  for (int parent_pos = init_parent_pos; parent_pos >= 0;
+       parent_pos--) {
+    heapify(parent_pos);
   }
 }
 
@@ -91,15 +91,15 @@ T Heap<T>::getMin() {
 /*******************************/
 
 template <typename T>
-void Heap<T>::heapify(int parent_index) {
+void Heap<T>::heapify(int parent_pos) {
   // if we're outside the index range, return
-  if (parent_index < 0 || parent_index >= values.size()) return;
+  if (parent_pos < 0 || parent_pos >= values.size()) return;
   // find children indexes
-  int left_child_index = parent_index * 2 + 1;
-  int right_child_index = parent_index * 2 + 2;
+  int left_child_index = parent_pos * 2 + 1;
+  int right_child_index = parent_pos * 2 + 2;
 
   // if parent is larger than child, swap with smallest child
-  int index_of_smallest = parent_index;
+  int index_of_smallest = parent_pos;
 
   // check if left child exists and if exists, is smallest value there
   if (left_child_index < values.size() &&
@@ -114,13 +114,13 @@ void Heap<T>::heapify(int parent_index) {
     index_of_smallest = right_child_index;
   }
   // if parent is not smallest, swap with smallest child
-  if (index_of_smallest != parent_index) {
-    T temp = values.at(parent_index);
-    values.at(parent_index) = values.at(index_of_smallest);
+  if (index_of_smallest != parent_pos) {
+    T temp = values.at(parent_pos);
+    values.at(parent_pos) = values.at(index_of_smallest);
     values.at(index_of_smallest) = temp;
   }
   // move up the 'tree' to grandparent
-  heapify(floor(parent_index / 2) - 1);
+  heapify(floor(parent_pos / 2) - 1);
 }
 
 #endif
