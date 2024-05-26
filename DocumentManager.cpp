@@ -25,6 +25,7 @@ int DocumentManager::search(string name) {
 
 bool DocumentManager::borrowDocument(int docid, int patronID) {
     bool idfound = 0;
+    Document* target;
     for (auto i : this->patrons) {
         if (i == patronID) {
             idfound = 1;
@@ -36,6 +37,7 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
     }
     for (auto i : this->documents) {
         if (i.id == docid) {
+            target = &i;
             if (i.borrowed.size() == (i.license_limit)) {
                 return false;
             }/*
@@ -43,10 +45,11 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
             if (it != i.borrowed.end()) {
                 return false;
             }*/
-            i.borrowed.push_back(patronID);
-            return true;
+
         }
     }
+    target->borrowed.push_back(patronID);
+    return true;
 }
 
 void DocumentManager::returnDocument(int docid, int patronID) {
