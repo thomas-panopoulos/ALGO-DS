@@ -53,12 +53,17 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
 }
 
 void DocumentManager::returnDocument(int docid, int patronID) {
-    for (auto i : this->documents) {
-        if (i.id == docid) {
-            vector<int>::iterator it = std::find(i.borrowed.begin(), i.borrowed.end(), patronID);
-            if (it != i.borrowed.end()) {
-                i.borrowed.erase(it);
+        for (auto i : this->patrons) {
+        if (i == patronID) {
+            for (auto i : this->documents) {
+                if (i.id == docid) {
+                    vector<int>::iterator it = std::find(i.borrowed.begin(), i.borrowed.end(), patronID);
+                    if (it != i.borrowed.end()) {
+                        i.borrowed.erase(it);
+                    }
+                }
             }
         }
+
     }
 }
