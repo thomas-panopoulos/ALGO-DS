@@ -40,7 +40,7 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
     for (auto i : this->documents) {
         if (i.id == docid) {
             target = &i;
-            if (i.borrowed.size()-1 == (i.license_limit)) {
+            if (i.current_borrowed == (i.license_limit)) {
                 return false;
             }/*
             vector<int>::iterator it = std::find(i.borrowed.begin(), i.borrowed.end(), patronID);
