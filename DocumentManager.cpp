@@ -32,6 +32,9 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
         }
 
     }
+    if (idfound == 0) {
+        return false;
+    }
     for (auto i : this->documents) {
         if (i.id == docid) {
             docufound = 1;
@@ -45,9 +48,6 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
             i.borrowed.push_back(patronID);
             return true;
         }
-    }
-    if (docufound == 0 || idfound == 0) {
-        return false;
     }
 }
 
