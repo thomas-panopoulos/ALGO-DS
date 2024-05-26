@@ -26,7 +26,7 @@ int DocumentManager::search(string name) {
 
 bool DocumentManager::borrowDocument(int docid, int patronID) {
     bool idfound = 0;
-    cout << patronID << endl << docid << endl;
+    //cout << patronID << endl << docid << endl;
     Document* target;
     for (auto i : this->patrons) {
         if (i == patronID) {
