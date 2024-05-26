@@ -8,8 +8,17 @@
 using namespace std;
 
 void DocumentManager::addDocument(string name, int id, int license_limit) {
-    Document doc = Document(name, id, license_limit);
-    this->documents.push_back(doc);
+    int idflag = 0;
+    for (auto i : this->documents) {
+        if (i->id == id) {
+            idflag=1;
+        }
+    }
+    if(idflag == 0) {
+        Document* doc = new Document(name, id, license_limit);
+        this->documents.push_back(doc);
+    }
+
 }
 
 void DocumentManager::addPatron(int patronID) {
@@ -18,8 +27,8 @@ void DocumentManager::addPatron(int patronID) {
 
 int DocumentManager::search(string name) {
     for (auto i : this->documents) {
-        if (i.name == name)
-            return i.id;
+        if (i->name == name)
+            return i->id;
     }
     return 0;
 }
@@ -37,34 +46,36 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
     if (idfound == 0) {
         return false;
     }
-    for (auto i : this->documents) {
-        if (i.id == docid) {
-            target = &i;
-            if (i.current_borrowed == (i.license_limit)) {
-                return false;
-            }/*
-            vector<int>::iterator it = std::find(i.borrowed.begin(), i.borrowed.end(), patronID);
-            if (it != i.borrowed.end()) {
-                return false;
-            }*/
 
+    
+    for (auto i : this->documents) {
+        if (i->id == docid) {
+            target = i;
+            //cout << "test" << endl;
+            //cout << i->current_borrowed << endl;
+            if (i->current_borrowed >= (i->license_limit)) {
+                
+                return false;
+            }
+            i->increment();
+            i->borrowed.push_back(docid);
         }
     }
-    if (std::find(target->borrowed.begin(), target->borrowed.end(), patronID) != target->borrowed.end()) {
-        return true;
-    }
-    target->borrowed.push_back(patronID);
+    //cout << target->current_borrowed << endl;
     return true;
 }
+
+
 
 void DocumentManager::returnDocument(int docid, int patronID) {
     for (auto j : this->patrons) {
         if (j == patronID) {
             for (auto i : this->documents) {
-                if (i.id == docid) {
-                    vector<int>::iterator it = std::find(i.borrowed.begin(), i.borrowed.end(), patronID);
-                    if (it != i.borrowed.end()) {
-                        i.borrowed.erase(it);
+                if (i->id == docid) {
+                    vector<int>::iterator it = std::find(i->borrowed.begin(), i->borrowed.end(), patronID);
+                    if (it != i->borrowed.end()) {
+                        i->borrowed.erase(it);
+                        i->decrement();
                     }
                 }
             }

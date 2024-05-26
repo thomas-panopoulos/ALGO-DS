@@ -7,7 +7,7 @@ using namespace std;
 class DocumentManager {
     public:
     //going to be read more than deleted so therefore vector as container
-    vector<Document> documents; //holds documents
+    vector<Document*> documents; //holds documents
     vector<int> patrons; // holds patronids
 
 
