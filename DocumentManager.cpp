@@ -25,7 +25,6 @@ int DocumentManager::search(string name) {
 
 bool DocumentManager::borrowDocument(int docid, int patronID) {
     bool idfound = 0;
-    bool docufound = 0;
     for (auto i : this->patrons) {
         if (i == patronID) {
             idfound = 1;
@@ -37,14 +36,13 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
     }
     for (auto i : this->documents) {
         if (i.id == docid) {
-            docufound = 1;
-            if (i.borrowed.size() == static_cast<long unsigned int>(i.license_limit)) {
+            if (i.borrowed.size() == (i.license_limit)) {
                 return false;
-            }
+            }/*
             vector<int>::iterator it = std::find(i.borrowed.begin(), i.borrowed.end(), patronID);
             if (it != i.borrowed.end()) {
                 return false;
-            }
+            }*/
             i.borrowed.push_back(patronID);
             return true;
         }
