@@ -38,6 +38,10 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
             if (i.borrowed.size() == static_cast<long unsigned int>(i.license_limit)) {
                 return false;
             }
+            vector<int>::iterator it = std::find(i.borrowed.begin(), i.borrowed.end(), patronID);
+            if (it != i.borrowed.end()) {
+                return false;
+            }
             i.borrowed.push_back(patronID);
             return true;
         }
