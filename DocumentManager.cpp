@@ -58,7 +58,6 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
                 return false;
             }
             i->increment();
-            i->borrowed.push_back(docid);
         }
     }
     //cout << target->current_borrowed << endl;
@@ -72,11 +71,7 @@ void DocumentManager::returnDocument(int docid, int patronID) {
         if (j == patronID) {
             for (auto i : this->documents) {
                 if (i->id == docid) {
-                    vector<int>::iterator it = std::find(i->borrowed.begin(), i->borrowed.end(), patronID);
-                    if (it != i->borrowed.end()) {
-                        i->borrowed.erase(it);
-                        i->decrement();
-                    }
+                    i->decrement();
                 }
             }
             break;
