@@ -30,6 +30,7 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
         if (i == patronID) {
             idfound = 1;
         }
+
     }
     for (auto i : this->documents) {
         if (i.id == docid) {
