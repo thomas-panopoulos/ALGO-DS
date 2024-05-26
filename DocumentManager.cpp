@@ -35,7 +35,7 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
     for (auto i : this->documents) {
         if (i.id == docid) {
             docufound = 1;
-            if (i.borrowed.size() == i.license_limit) {
+            if (i.borrowed.size() == static_cast<long unsigned int>(i.license_limit)) {
                 return false;
             }
             i.borrowed.push_back(patronID);
