@@ -48,6 +48,9 @@ bool DocumentManager::borrowDocument(int docid, int patronID) {
 
         }
     }
+    if (std::find(target->borrowed.begin(), target->borrowed.end(), patronID) != target->borrowed.std::end) {
+        return true;
+    }
     target->borrowed.push_back(patronID);
     return true;
 }
