@@ -1,4 +1,5 @@
-#pragma Once
+#ifndef DOCUMENT_H
+#define DOCUMENT_H
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -11,3 +12,5 @@ class Document {
     vector<int> borrowed;
     Document(string name, int id, int license_limit) : name(name), id(id), license_limit(license_limit) {};
 };
+
+#endif

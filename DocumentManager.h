@@ -1,4 +1,5 @@
-#pragma Once
+#ifndef DOCUMENTMANAGER_H
+#define DOCUMENTMANAGER_H
 #include <string>
 #include <vector>
 #include "Document.h"
@@ -8,7 +9,7 @@ class DocumentManager {
     //going to be read more than deleted so therefore vector as container
     vector<Document> documents; //holds documents
     vector<int> patrons; // holds patronids
-    
+
 
     void addDocument(string name, int id, int license_limit);
 
@@ -20,3 +21,5 @@ class DocumentManager {
 
     void returnDocument(int docid, int patronID);
 };
+
+#endif
